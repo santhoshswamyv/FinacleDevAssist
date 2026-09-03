@@ -58,8 +58,6 @@ void FIExecutionHandler::parse(const std::string& response)
             return;
         }
 
-        Logger::info("[FI] STATUS type : " + std::string(result["STATUS"].type_name()));
-
         if (result["STATUS"] != "SUCCESS")
         {
             MessageBox(
@@ -94,14 +92,6 @@ void FIExecutionHandler::parse(const std::string& response)
         if (!result.contains("response"))
         {
             Logger::error("[FI] response missing");
-            return;
-        }
-
-        Logger::info("[FI] response type : " + std::string(result["response"].type_name()));
-
-        if (!result["response"].is_string())
-        {
-            Logger::error("[FI] response has unexpected type : " + std::string(result["response"].type_name()));
             return;
         }
 
