@@ -7,6 +7,7 @@ import com.sandy.fda.models.fi.FIException;
 import com.sandy.fda.models.fi.Request;
 import com.sandy.fda.models.fi.Response;
 import com.sandy.fda.utils.FDAConstants;
+import com.sandy.fda.utils.FDALogger;
 
 public class FinacleInterfaceHandler {
 
@@ -28,6 +29,7 @@ public class FinacleInterfaceHandler {
             Response response = finacleInterfaceClient.send(request);
             return convertToJsonResponse(response);
         } catch (FIException e) {
+            FDALogger.error(e);
             return convertToJsonResponse(e);
         }
     }
